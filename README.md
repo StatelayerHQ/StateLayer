@@ -61,7 +61,7 @@ Plane({
   color: "#444444"
 });
 ```
-## Available Components (v0.1.0)
+## Available Components (v0.1.1)
 
 Our MVP component set includes the basic building blocks for most scenes:
 
@@ -77,9 +77,22 @@ Each component accepts props like:
 - `color`
 - `size`
 - `animation` (simple rotation/translation animations)
-
+- `onClick`
+  
 ---
-
+## Interactivity with onClick
+All components accept an onClick prop to bring your scenes to life. The event handler gives you direct access to the underlying 3D object for advanced manipulations.
+```javascript
+// Make a box change to purple when clicked
+Box({
+  color: "orange",
+  onClick: (event) => {
+    // event.target gives you direct access to the 3D object's material
+    event.target.material.diffuseColor = convertColorToBabylon('purple');
+  }
+});
+```
+---
 ## Feedback & Issues
 
 This is a brand new project, and your feedback is critical!  
@@ -98,6 +111,5 @@ Please open an issue on GitHub — we read every single one.
 
 We’re just getting started! Based on user feedback, here’s what’s coming next:
 
-- **Interactivity**: `onClick` handlers and other events.  
 - **More Components**: `<Text3D>`, `<Image3D>`, and `<Model3D>` for custom models.  
 - **User Accounts**: Save and share projects in the cloud.  
